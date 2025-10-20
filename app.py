@@ -20,7 +20,7 @@ def load_model():
             model = pickle.load(file)
         return model
     except ModuleNotFoundError as e:
-        st.error("⚠️ Missing library required to load the model.")
+        st.error("⚠️ Missing library required to load the model. Check versions in requirements.txt")
         st.write(f"Details: {e}")
         return None
     except Exception as e:
@@ -64,7 +64,7 @@ with col2:
 if st.button("Predict Air Quality Index"):
 
     if model is None:
-        st.error("⚠️ Model not loaded. Please check the model file and required libraries.")
+        st.error("⚠️ Model not loaded. Please check the model file and library versions.")
     else:
         # Encode categories to numeric
         encoding_map = {"Good":0, "Moderate":1, "Unhealthy":2, "Very Unhealthy":3, "Hazardous":4}
