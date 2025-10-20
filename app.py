@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Streamlit Air Pollution Prediction App
 """
@@ -6,9 +6,17 @@ Streamlit Air Pollution Prediction App
 import streamlit as st
 import numpy as np
 import pickle
+import os
 
-# ---- Load your trained model ----
-model_path = "Pollution_Model.pkl"
+# ---- Load your trained model safely ----
+# This works both locally and on Streamlit Cloud
+model_path = os.path.join(os.path.dirname(__file__), "Pollution_Model.pkl")
+
+if not os.path.exists(model_path):
+    st.error("❌ Model file 'Pollution_Model.pkl' not found.")
+    st.info("Make sure the model file is uploaded in the same folder as app.py in your GitHub repo.")
+    st.stop()
+
 with open(model_path, "rb") as file:
     model = pickle.load(file)
 
@@ -35,7 +43,7 @@ with col2:
     pm25_aqi_value = st.number_input("PM2.5 AQI Value", min_value=0.0)
 
 # ---- Predict button ----
-if st.button(" Predict Air Quality Index"):
+if st.button("Predict Air Quality Index"):
 
     # ---- Encode categorical text fields ----
     encoding_map = {
