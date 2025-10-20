@@ -9,14 +9,14 @@ import pickle
 import os
 
 # ---- Load your trained model safely ----
-# This works both locally and on Streamlit Cloud
 model_path = os.path.join(os.path.dirname(__file__), "Pollution_Model.pkl")
 
 if not os.path.exists(model_path):
     st.error("❌ Model file 'Pollution_Model.pkl' not found.")
-    st.info("Make sure the model file is uploaded in the same folder as app.py in your GitHub repo.")
+    st.info("➡️ Make sure the model file is uploaded in the same folder as app.py in your GitHub repo.")
     st.stop()
 
+# Load model
 with open(model_path, "rb") as file:
     model = pickle.load(file)
 
