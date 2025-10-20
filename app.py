@@ -9,7 +9,7 @@ import pickle
 import os
 
 # ---- Load your trained model safely ----
-model_path = os.path.join(os.path.dirname(__file__), "Pollution_Model.pkl")
+model_path = os.path.join(os.path.dirname(__file__), "Air_Pollution_Model.pkl")
 
 if not os.path.exists(model_path):
     st.error("❌ Model file 'Pollution_Model.pkl' not found.")
@@ -95,3 +95,4 @@ if st.button("Predict Air Quality Index"):
 # ---- Footer ----
 st.markdown("<hr>", unsafe_allow_html=True)
 st.caption("Developed by: NTAKIRUTIMANA Patrick | RP TUMBA | ETT B-Tech 2025–2026")
+
