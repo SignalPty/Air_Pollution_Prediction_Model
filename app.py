@@ -11,7 +11,7 @@ import os
 # ---- Load model safely ----
 @st.cache_resource
 def load_model():
-    model_path = "Air_Pollution_Model.pkl"  # Relative path
+    model_path = "Air_Pollution_Model.pkl"  # relative path
     if not os.path.exists(model_path):
         st.error(f"❌ Model file not found: {model_path}")
         return None
