@@ -3,7 +3,7 @@ pandas==2.2.2
 numpy==1.26.4
 scikit-learn==1.5.1
 pickleshare==0.7.5
-python==3.12.7
+
 
 
 
