@@ -6,6 +6,7 @@ Streamlit Air Pollution Prediction App (Using pickle)
 import streamlit as st
 import numpy as np
 import pickle
+import sklearn
 import os
 
 # ---- Load model safely ----
@@ -106,3 +107,4 @@ if st.button("Predict Air Quality Index"):
 # ---- Footer ----
 st.markdown("<hr>", unsafe_allow_html=True)
 st.caption("Developed by: NTAKIRUTIMANA Patrick | RP TUMBA | ETT B-Tech 2025–2026")
+
