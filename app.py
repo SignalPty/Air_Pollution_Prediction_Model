@@ -41,34 +41,27 @@ col1, col2 = st.columns(2)
 
 with col1:
     aqi_value = st.number_input("Overall AQI Value", min_value=0.0)
-    aqi_category = st.selectbox(
-        "Overall AQI Category", ["Good", "Moderate", "Unhealthy", "Very Unhealthy", "Hazardous"]
-    )
+    aqi_category = st.selectbox("Overall AQI Category",
+                                ["Good", "Moderate", "Unhealthy", "Very Unhealthy", "Hazardous"])
     co_aqi_value = st.number_input("CO AQI Value", min_value=0.0)
-    co_aqi_category = st.selectbox(
-        "CO AQI Category", ["Good", "Moderate", "Unhealthy", "Very Unhealthy", "Hazardous"]
-    )
+    co_aqi_category = st.selectbox("CO AQI Category",
+                                   ["Good", "Moderate", "Unhealthy", "Very Unhealthy", "Hazardous"])
     ozone_aqi_value = st.number_input("Ozone AQI Value", min_value=0.0)
 
 with col2:
-    ozone_aqi_category = st.selectbox(
-        "Ozone AQI Category", ["Good", "Moderate", "Unhealthy", "Very Unhealthy", "Hazardous"]
-    )
+    ozone_aqi_category = st.selectbox("Ozone AQI Category",
+                                      ["Good", "Moderate", "Unhealthy", "Very Unhealthy", "Hazardous"])
     no2_aqi_value = st.number_input("NO₂ AQI Value", min_value=0.0)
-    no2_aqi_category = st.selectbox(
-        "NO₂ AQI Category", ["Good", "Moderate", "Unhealthy", "Very Unhealthy", "Hazardous"]
-    )
+    no2_aqi_category = st.selectbox("NO₂ AQI Category",
+                                    ["Good", "Moderate", "Unhealthy", "Very Unhealthy", "Hazardous"])
     pm25_aqi_value = st.number_input("PM2.5 AQI Value", min_value=0.0)
 
 # ---- Predict button ----
 if st.button("Predict Air Quality Index"):
-
     if model is None:
         st.error("⚠️ Model not loaded. Please check the model file and library versions.")
     else:
-        # Encode categories to numeric
-        encoding_map = {"Good":0, "Moderate":1, "Unhealthy":2, "Very Unhealthy":3, "Hazardous":4}
-
+        encoding_map = {"Good": 0, "Moderate": 1, "Unhealthy": 2, "Very Unhealthy": 3, "Hazardous": 4}
         input_array = np.array([
             aqi_value,
             encoding_map[aqi_category],
@@ -86,7 +79,6 @@ if st.button("Predict Air Quality Index"):
             aqi_pred = prediction[0]
             st.subheader(f"Predicted AQI: {aqi_pred:.2f}")
 
-            # Color-coded AQI output
             if aqi_pred <= 50:
                 st.success("Air Quality: Good 🟩")
             elif aqi_pred <= 100:
@@ -106,5 +98,3 @@ if st.button("Predict Air Quality Index"):
 # ---- Footer ----
 st.markdown("<hr>", unsafe_allow_html=True)
 st.caption("Developed by: NTAKIRUTIMANA Patrick | RP TUMBA | ETT B-Tech 2025–2026")
-
-
